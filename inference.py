@@ -5,8 +5,10 @@ import numpy as np
 import random
 import torch
 import pickle
+import time
 
-from stream_pipeline_offline import StreamSDK
+# from stream_pipeline_offline import StreamSDK
+from stream_pipeline_online import StreamSDK
 
 
 def seed_everything(seed):
@@ -25,7 +27,6 @@ def load_pkl(pkl):
 
 
 def run(SDK: StreamSDK, audio_path: str, source_path: str, output_path: str, more_kwargs: str | dict = {}):
-
     if isinstance(more_kwargs, str):
         more_kwargs = load_pkl(more_kwargs)
     setup_kwargs = more_kwargs.get("setup_kwargs", {})
