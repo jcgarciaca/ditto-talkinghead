@@ -9,7 +9,7 @@ class VideoWriterByImageIO:
         quality = kwargs.get("quality")  # video quality
         pixelformat = kwargs.get("pixelformat", "yuv420p")  # video pixel format
         macro_block_size = kwargs.get("macro_block_size", 2)
-        ffmpeg_params = ["-crf", str(kwargs.get("crf", 18))]
+        ffmpeg_params = ["-movflags", "frag_keyframe+empty_moov+default_base_moof", "-crf", str(kwargs.get("crf", 18))]
 
         os.makedirs(os.path.dirname(video_path), exist_ok=True)
         
